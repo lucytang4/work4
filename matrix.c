@@ -70,10 +70,21 @@ struct matrix * make_rotX(double theta) {
   int row,col; 
   for (row = 0; row < tmp->rows; row++){
     for (col = 0; col < tmp->cols; col++){
-      if (row == 0 & col == 0)//ENDED HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+      if (row == 0 & col == 0)
+	tmp->m[row][col] = x*cos(theta);
+      else if (row == 0 & col == 1)
+	tmp->m[row][col] = -(sin(theta));
+      else if (row == 1 & col == 0)
+	tmp->m[row][col] = sin(theta);
+      else if (row == 1 & col == 1)
+	tmp->m[row][col] = cos(theta);;
+      else if (row == col)
+	tmp->m[row][col] = 1;
+      else
+	tmp->m[row][col] = 0;
     }
   }
-  return NULL;
+  return tmp;
 }
 
 /*======== struct matrix * make_rotY() ==========
