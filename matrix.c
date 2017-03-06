@@ -13,7 +13,23 @@ Returns: The translation matrix created using x, y and z
 as the translation offsets.
 ====================*/
 struct matrix * make_translate(double x, double y, double z) {
-  return NULL;
+  struct matrix *tmp = new_matrix(4,4);
+  int row,col;
+  for (row = 0; row < tmp->rows; row++){
+    for (col = 0; col < tmp->cols; col++){
+      if (row == col)
+	tmp->m[row][col] = 1;
+      else if (row == 0 && col == 3)
+	tmp->m[row][col] = x;
+      else if (row == 1 && col == 3)
+	tmp->m[row][col] = y;
+      else if (row == 2 && col == 3)
+	tmp->m[row][col] = z;
+      else
+	tmp->m[row][col] = 0;
+    }
+  }
+  return tmp;
 }
 
 /*======== struct matrix * make_scale() ==========
@@ -24,7 +40,23 @@ Returns: The translation matrix creates using x, y and z
 as the scale factors
 ====================*/
 struct matrix * make_scale(double x, double y, double z) {
-  return NULL;
+  struct matrix *tmp = new_matrix(4,4);
+  int row,col;
+  for (row = 0; row < tmp->rows; row++){
+    for (col = 0; col < tmp->cols; col++){
+      if (row == 0 && col == 0)
+	tmp->m[row][col] = x;
+      else if (row == 1 && col == 1)
+	tmp->m[row][col] = y;
+      else if (row == 2 && col == 2)
+	tmp->m[row][col] = z;
+      else if (row == 3 && col == 3)
+	tmp->m[row][col] = 1;
+      else
+	tmp->m[row][col] = 0;
+    }
+  }
+  return tmp;
 }
 
 /*======== struct matrix * make_rotX() ==========
@@ -34,6 +66,13 @@ Returns: The rotation matrix created using theta as the
 angle of rotation and X as the axis of rotation.
 ====================*/
 struct matrix * make_rotX(double theta) {
+  struct matrix *tmp = new_matrix(4,4);
+  int row,col; 
+  for (row = 0; row < tmp->rows; row++){
+    for (col = 0; col < tmp->cols; col++){
+      if (row == 0 & col == 0)//ENDED HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+    }
+  }
   return NULL;
 }
 
