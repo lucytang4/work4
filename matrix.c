@@ -66,18 +66,19 @@ Returns: The rotation matrix created using theta as the
 angle of rotation and X as the axis of rotation.
 ====================*/
 struct matrix * make_rotX(double theta) {
+  theta *= M_PI / 180;
   struct matrix *tmp = new_matrix(4,4);
   int row,col; 
   for (row = 0; row < tmp->rows; row++){
     for (col = 0; col < tmp->cols; col++){
-      if (row == 0 & col == 0)
-	tmp->m[row][col] = x*cos(theta);
-      else if (row == 0 & col == 1)
+      if (row == 1 && col == 1)
+	tmp->m[row][col] = cos(theta);
+      else if (row == 1 && col == 2)
 	tmp->m[row][col] = -(sin(theta));
-      else if (row == 1 & col == 0)
+      else if (row == 2 && col == 1)
 	tmp->m[row][col] = sin(theta);
-      else if (row == 1 & col == 1)
-	tmp->m[row][col] = cos(theta);;
+      else if (row == 2 && col == 2)
+	tmp->m[row][col] = cos(theta);
       else if (row == col)
 	tmp->m[row][col] = 1;
       else
@@ -94,7 +95,26 @@ Returns: The rotation matrix created using theta as the
 angle of rotation and Y as the axis of rotation.
 ====================*/
 struct matrix * make_rotY(double theta) {
-  return NULL;
+  theta *= M_PI / 180;
+  struct matrix *tmp = new_matrix(4,4);
+  int row,col; 
+  for (row = 0; row < tmp->rows; row++){
+    for (col = 0; col < tmp->cols; col++){
+      if (row == 0 && col == 0)
+	tmp->m[row][col] = cos(theta);
+      else if (row == 0 && col == 2)
+	tmp->m[row][col] = sin(theta);
+      else if (row == 2 && col == 0)
+	tmp->m[row][col] = sin(theta);
+      else if (row == 2 && col == 2)
+	tmp->m[row][col] = -(cos(theta));
+      else if (row == col)
+	tmp->m[row][col] = 1;
+      else
+	tmp->m[row][col] = 0;
+    }
+  }
+  return tmp;
 }
 
 /*======== struct matrix * make_rotZ() ==========
@@ -104,18 +124,19 @@ Returns: The rotation matrix created using theta as the
 angle of rotation and Z as the axis of rotation.
 ====================*/
 struct matrix * make_rotZ(double theta) {
+  theta *= M_PI / 180;
   struct matrix *tmp = new_matrix(4,4);
   int row,col; 
   for (row = 0; row < tmp->rows; row++){
     for (col = 0; col < tmp->cols; col++){
-      if (row == 0 & col == 0)
-	tmp->m[row][col] = x*cos(theta);
-      else if (row == 0 & col == 1)
+      if (row == 0 && col == 0)
+	tmp->m[row][col] = cos(theta);
+      else if (row == 0 && col == 1)
 	tmp->m[row][col] = -(sin(theta));
-      else if (row == 1 & col == 0)
+      else if (row == 1 && col == 0)
 	tmp->m[row][col] = sin(theta);
-      else if (row == 1 & col == 1)
-	tmp->m[row][col] = cos(theta);;
+      else if (row == 1 && col == 1)
+	tmp->m[row][col] = cos(theta);
       else if (row == col)
 	tmp->m[row][col] = 1;
       else
