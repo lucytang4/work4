@@ -69,6 +69,20 @@ void parse_file ( char * filename,
   while ( fgets(line, 255, f) != NULL ) {
     line[strlen(line)-1]='\0';
     printf(":%s:\n",line);
+    fgets(line,255,f);
+    line[strlen(line)-1]='\0';
+    if (strcmp(line,"line") == 0){
+      int pos = 0, ctr = 0;
+      char *tmp = line;
+      double values[6];
+      while (pos < strlen(tmp)){
+	values[ctr] = atof(tmp);
+	printf("values[%d] : %f",ctr,values[ctr]);
+	pos = strchr(tmp,'')+1;
+	tmp = line[pos];
+      }
+      add_edge(edges,values[0],values[1],values[2],values[3],values[4],values[5]);
+    }
   }
 }
   
