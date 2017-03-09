@@ -16,11 +16,6 @@ int main(int argc, char **argv) {
 
   edges = new_matrix(4, 4);
   transform = new_matrix(4, 4);
-  /*printf("new transformation matrix:\n");
-  
-  transform = make_translate(5,5,5);
-  printf("translate matrix by 5,5,5:\n");
-  print_matrix(transform);*/
 
   if ( argc == 2 )
     parse_file( argv[1], transform, edges, s );

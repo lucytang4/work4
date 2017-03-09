@@ -74,7 +74,7 @@ struct matrix * make_rotX(double theta) {
       if (row == 1 && col == 1)
 	tmp->m[row][col] = cos(theta);
       else if (row == 1 && col == 2)
-	tmp->m[row][col] = -(sin(theta));
+	tmp->m[row][col] = -sin(theta);
       else if (row == 2 && col == 1)
 	tmp->m[row][col] = sin(theta);
       else if (row == 2 && col == 2)
@@ -105,9 +105,9 @@ struct matrix * make_rotY(double theta) {
       else if (row == 0 && col == 2)
 	tmp->m[row][col] = sin(theta);
       else if (row == 2 && col == 0)
-	tmp->m[row][col] = sin(theta);
+	tmp->m[row][col] = -sin(theta);
       else if (row == 2 && col == 2)
-	tmp->m[row][col] = -(cos(theta));
+	tmp->m[row][col] = cos(theta);
       else if (row == col)
 	tmp->m[row][col] = 1;
       else
@@ -132,7 +132,7 @@ struct matrix * make_rotZ(double theta) {
       if (row == 0 && col == 0)
 	tmp->m[row][col] = cos(theta);
       else if (row == 0 && col == 1)
-	tmp->m[row][col] = -(sin(theta));
+	tmp->m[row][col] = -sin(theta);
       else if (row == 1 && col == 0)
 	tmp->m[row][col] = sin(theta);
       else if (row == 1 && col == 1)
